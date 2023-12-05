@@ -1,0 +1,150 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    int opcion;
+    int dinero = 0;
+    int donaciones = 0;
+
+    std::cout << "Bienvenido al juego de la chamba. Comienzas en la ruina con $0.\n";
+
+    for (int i = 0; i < 5; i++) {
+        std::cout << "Tienes $" << dinero << ".\n";
+        std::cout << "Elige una opcion:\n";
+        std::cout << "1. Buscar una chambita.\n";
+        std::cout << "2. Comprar algo.\n";
+        std::cout << "3. Descansar.\n";
+        std::cout << "4. Donar dinero.\n";
+        std::cout << "5. Salir del juego.\n";
+        std::cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                std::cout << "¿Que chamba te gustaria hacer?\n";
+                std::cout << "1. Chambear como carpintero por $1000.\n";
+                std::cout << "2. Chambear como maestro de ingles por $2750.\n";
+                std::cout << "3. Chambear como taxista por $3000.\n";
+                std::cout << "4. Chambear como ingeniero en computacion por $10000.\n";
+                int chamba;
+                std::cin >> chamba;
+                switch (chamba) {
+                    case 1:
+                        dinero += 1000;
+                        std::cout << "Has chambeado como carpintero y has ganado $1000.\n";
+                        break;
+                    case 2:
+                        dinero += 2750;
+                        std::cout << "Has chambeado como maestro de ingles y has ganado $2750.\n";
+                        break;
+                    case 3:
+                        dinero += 3000;
+                        std::cout << "Has chambeado como taxista y has ganado $3000.\n";
+                        break;
+                    case 4:
+                        dinero += 10000;
+                        std::cout << "Has chambeado como ingeniero en computacion y has ganado $10000.\n";
+                        break;
+                    default:
+                        std::cout << "Opcion no valida. Por favor, elige una opción del 1 al 4.\n";
+                        break;
+                }
+                break;
+            case 2:
+                std::cout << "¿Que te gustaria comprar?\n";
+                std::cout << "1. Un auto por $3000.\n";
+                std::cout << "2. Comida por $500.\n";
+                std::cout << "3. Un videojuego por $1500.\n";
+                int compra;
+                std::cin >> compra;
+                switch (compra) {
+                    case 1:
+                        if (dinero >= 3000) {
+                            dinero -= 3000;
+                            std::cout << "Has comprado un auto por $3000.\n";
+                        } else {
+                            std::cout << "Te hace falta chambear mas.\n";
+                        }
+                        break;
+                    case 2:
+                        if (dinero >= 500) {
+                            dinero -= 500;
+                            std::cout << "Has comprado comida por $500.\n";
+                        } else {
+                            std::cout << "Te hace falta chambear mas.\n";
+                        }
+                        break;
+                    case 3:
+                        if (dinero >= 1500) {
+                            dinero -= 1500;
+                            std::cout << "Has comprado un videojuego por $1500.\n";
+                        } else {
+                            std::cout << "Te hace falta chambear mas.\n";
+                        }
+                        break;
+                    default:
+                        std::cout << "Opcion no valida. Por favor, elige una opcion del 1 al 3.\n";
+                        break;
+                }
+                break;
+            case 3:
+                std::cout << "¿Como te gustaria descansar?\n";
+                std::cout << "1. Salir al centro comercial por $2500.\n";
+                std::cout << "2. Ir por un helado por $300.\n";
+                std::cout << "3. Ir de vacaciones por $15000.\n";
+                int descanso;
+                std::cin >> descanso;
+                switch (descanso) {
+                    case 1:
+                        if (dinero >= 2500) {
+                            dinero -= 2500;
+                            std::cout << "Has decidido salir al centro comercial y has gastado $2500.\n";
+                        } else {
+                            std::cout << "No tienes suficiente dinero para salir al centro comercial.\n";
+                        }
+                        break;
+                    case 2:
+                        if (dinero >= 300) {
+                            dinero -= 300;
+                            std::cout << "Has decidido ir por un helado y has gastado $300.\n";
+                        } else {
+                            std::cout << "No tienes suficiente dinero para ir por un helado.\n";
+                        }
+                        break;
+                    case 3:
+                        if (dinero >= 15000) {
+                            dinero -= 15000;
+                            std::cout << "Has decidido ir de vacaciones y has gastado $15000.\n";
+                        } else {
+                            std::cout << "No tienes suficiente dinero para ir de vacaciones.\n";
+                        }
+                        break;
+                    default:
+                        std::cout << "Opcion no valida. Por favor, elige una opción del 1 al 3.\n";
+                        break;
+                }
+                break;
+            case 4:
+                if (dinero >= 150) {
+                    dinero -= 150;
+                    donaciones++;
+                    std::cout << "Has donado $150.\n";
+                    if (donaciones > 2) {
+                        std::cout << "¡Felicidades! Has donado mas de dos veces.\n";
+                    }
+                } else {
+                    std::cout << "No tienes suficiente dinero para donar.\n";
+                }
+                break;
+            case 5:
+                std::cout << "MUCHAS GRACIAS POR JUGAR, NOS VEMOS PRONTO :)\n";
+                return 0;
+            default:
+                std::cout << "Opcion no valida. Por favor, elige una opción del 1 al 5.\n";
+                break;
+        }
+    }
+
+    std::cout << "Fin del juego. Solo conseguiste $" << dinero << " mediocre.\n";
+
+    return 0;
+}
